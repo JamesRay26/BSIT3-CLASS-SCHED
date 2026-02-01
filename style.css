@@ -490,8 +490,8 @@ footer {
 
 .back-to-top {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 1rem;
     width: 50px;
     height: 50px;
     background: var(--accent);
@@ -526,37 +526,65 @@ footer {
 
 .report-button {
     position: fixed;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 1rem;
+    left: 1rem;
     background: linear-gradient(135deg, #3b5998, #4267B2);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.95rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0;
     z-index: 999;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+}
+
+.report-button::before {
+    content: '⚠️';
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.report-button .button-text {
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+}
+
+.report-button:hover,
+.report-button.expanded {
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
+    width: auto;
+}
+
+.report-button:hover .button-text,
+.report-button.expanded .button-text {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 0.5rem;
 }
 
 .report-button:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 6px 20px rgba(59, 89, 152, 0.5);
     background: linear-gradient(135deg, #4267B2, #3b5998);
 }
 
 .report-button:active {
-    transform: translateY(-1px) scale(1.02);
-}
-
-.report-button::before {
-    content: '⚠️';
-    font-size: 1.2rem;
+    transform: translateY(-1px) scale(1);
 }
 
 /* Modal Styles */
@@ -904,15 +932,27 @@ footer {
     }
 
     .report-button {
-        bottom: 5.5rem;
+        bottom: 1rem;
         left: 1rem;
+        padding: 0.7rem;
+        width: 45px;
+        height: 45px;
+    }
+
+    .report-button::before {
+        font-size: 1.3rem;
+    }
+
+    .report-button.expanded {
         padding: 0.7rem 1.2rem;
-        font-size: 0.85rem;
     }
 
     .back-to-top {
         bottom: 1rem;
         right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
 
     .modal-content {
