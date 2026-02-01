@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Year Class Schedule</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Third Year Class Schedule</h1>
+            <p class="subtitle">Academic Year 2025-2026</p>
+            <div class="quote-top" id="topQuote"></div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Total Units</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Courses</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">11/4</span>
+                    <span class="stat-label">Lec/Lab Units</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, var(--class), #5dade2);"></div>
+                <span>Lecture Class</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, var(--lab), #bb8fce);"></div>
+                <span>Laboratory Class</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--vacant);"></div>
+                <span>Vacant Time</span>
+            </div>
+        </div>
+
+        <div class="schedule-grid">
+            <!-- MONDAY -->
+            <div class="day-column" data-day="1">
+                <div class="day-header">Monday</div>
+                <div class="time-slot" data-start="7:00" data-end="8:30">
+                    <div class="time">7:00 AM - 8:30 AM</div>
+                    <div class="class-info vacant-slot">
+                        Preparation / Extra Rest
+                    </div>
+                </div>
+                <div class="time-slot" data-start="8:30" data-end="9:30">
+                    <div class="time">8:30 AM - 9:30 AM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT Prof Elec 4</div>
+                        <div class="course-name">IT Professional Elective 4</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">S. TECSON</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="9:30" data-end="11:00">
+                    <div class="time">9:30 AM - 11:00 AM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">IT Prof Elec 4L</div>
+                        <div class="course-name">IT Professional Elective 4 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">S. TECSON</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="11:00" data-end="20:00">
+                    <div class="time">11:00 AM - 8:00 PM</div>
+                    <div class="class-info vacant-slot">
+                        VACANT
+                    </div>
+                </div>
+            </div>
+
+            <!-- TUESDAY -->
+            <div class="day-column" data-day="2">
+                <div class="day-header">Tuesday</div>
+                <div class="time-slot" data-start="7:00" data-end="8:30">
+                    <div class="time">7:00 AM - 8:30 AM</div>
+                    <div class="class-info vacant-slot">
+                        Preparation / Extra Rest
+                    </div>
+                </div>
+                <div class="time-slot" data-start="8:30" data-end="9:30">
+                    <div class="time">8:30 AM - 9:30 AM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT Prof Elec 3</div>
+                        <div class="course-name">IT Professional Elective 3</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">REÑES</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="9:30" data-end="11:00">
+                    <div class="time">9:30 AM - 11:00 AM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">IT Prof Elec 3L (LAB)</div>
+                        <div class="course-name">IT Professional Elective 3 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">REÑES</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="11:00" data-end="13:00">
+                    <div class="time">11:00 AM - 1:00 PM</div>
+                    <div class="class-info vacant-slot">
+                        VACANT
+                    </div>
+                </div>
+                <div class="time-slot" data-start="13:00" data-end="14:30">
+                    <div class="time">1:00 PM - 2:30 PM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT THS1</div>
+                        <div class="course-name">Information Technology Capstone 1</div>
+                        <div class="details">
+                            <span class="room">TBA</span>
+                            <span class="teacher">PABROA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="14:30" data-end="15:30">
+                    <div class="time">2:30 PM - 3:30 PM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">ITE 2</div>
+                        <div class="course-name">IT Elective 2</div>
+                        <div class="details">
+                            <span class="room">CLB 3</span>
+                            <span class="teacher">ALCAIN</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="15:30" data-end="17:00">
+                    <div class="time">3:30 PM - 5:00 PM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">ITE 2 (LAB)</div>
+                        <div class="course-name">IT Elective 2 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 3</span>
+                            <span class="teacher">ALCAIN</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="17:00" data-end="18:00">
+                    <div class="time">5:00 PM - 6:00 PM</div>
+                    <div class="class-info vacant-slot">
+                        VACANT
+                    </div>
+                </div>
+                <div class="time-slot" data-start="18:00" data-end="19:00">
+                    <div class="time">6:00 PM - 7:00 PM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT IAS1</div>
+                        <div class="course-name">Information Assurance and Security 1</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">OPLAS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="19:00" data-end="20:30">
+                    <div class="time">7:00 PM - 8:30 PM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">IT IAS1L (LAB)</div>
+                        <div class="course-name">Information Assurance and Security 1 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">OPLAS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEDNESDAY -->
+            <div class="day-column" data-day="3">
+                <div class="day-header">Wednesday</div>
+                <div class="time-slot" data-start="7:00" data-end="8:30">
+                    <div class="time">7:00 AM - 8:30 AM</div>
+                    <div class="class-info vacant-slot">
+                        Preparation / Extra Rest
+                    </div>
+                </div>
+                <div class="time-slot" data-start="8:30" data-end="9:30">
+                    <div class="time">8:30 AM - 9:30 AM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT Prof Elec 4</div>
+                        <div class="course-name">IT Professional Elective 4</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">S. TECSON</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="9:30" data-end="11:00">
+                    <div class="time">9:30 AM - 11:00 AM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">IT Prof Elec 4L (LAB)</div>
+                        <div class="course-name">IT Professional Elective 4 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">S. TECSON</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="11:00" data-end="20:00">
+                    <div class="time">11:00 AM - 8:00 PM</div>
+                    <div class="class-info vacant-slot">
+                        VACANT
+                    </div>
+                </div>
+            </div>
+
+            <!-- THURSDAY -->
+            <div class="day-column" data-day="4">
+                <div class="day-header">Thursday</div>
+                <div class="time-slot" data-start="7:00" data-end="8:30">
+                    <div class="time">7:00 AM - 8:30 AM</div>
+                    <div class="class-info vacant-slot">
+                        Preparation / Extra Rest
+                    </div>
+                </div>
+                <div class="time-slot" data-start="8:30" data-end="9:30">
+                    <div class="time">8:30 AM - 9:30 AM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT Prof Elec 3</div>
+                        <div class="course-name">IT Professional Elective 3</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">REÑES</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="9:30" data-end="11:00">
+                    <div class="time">9:30 AM - 11:00 AM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">IT Prof Elec 3L (LAB)</div>
+                        <div class="course-name">IT Professional Elective 3 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">REÑES</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="11:00" data-end="13:00">
+                    <div class="time">11:00 AM - 1:00 PM</div>
+                    <div class="class-info vacant-slot">
+                        VACANT
+                    </div>
+                </div>
+                <div class="time-slot" data-start="13:00" data-end="14:30">
+                    <div class="time">1:00 PM - 2:30 PM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT THS1</div>
+                        <div class="course-name">Information Technology Capstone 1</div>
+                        <div class="details">
+                            <span class="room">TBA</span>
+                            <span class="teacher">PABROA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="14:30" data-end="15:30">
+                    <div class="time">2:30 PM - 3:30 PM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">ITE 2</div>
+                        <div class="course-name">IT Elective 2</div>
+                        <div class="details">
+                            <span class="room">CLB 3</span>
+                            <span class="teacher">ALCAIN</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="15:30" data-end="17:00">
+                    <div class="time">3:30 PM - 5:00 PM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">ITE 2 (LAB)</div>
+                        <div class="course-name">IT Elective 2 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 3</span>
+                            <span class="teacher">ALCAIN</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="17:00" data-end="18:00">
+                    <div class="time">5:00 PM - 6:00 PM</div>
+                    <div class="class-info vacant-slot">
+                        VACANT
+                    </div>
+                </div>
+                <div class="time-slot" data-start="18:00" data-end="19:00">
+                    <div class="time">6:00 PM - 7:00 PM</div>
+                    <div class="class-info class-slot">
+                        <div class="course-code">IT IAS1</div>
+                        <div class="course-name">Information Assurance and Security 1</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">OPLAS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-slot" data-start="19:00" data-end="20:30">
+                    <div class="time">7:00 PM - 8:30 PM</div>
+                    <div class="class-info lab-slot">
+                        <div class="course-code">IT IAS1L (LAB)</div>
+                        <div class="course-name">Information Assurance and Security 1 Laboratory</div>
+                        <div class="details">
+                            <span class="room">CLB 5</span>
+                            <span class="teacher">OPLAS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="quote-bottom" id="bottomQuote"></div>
+            <div>Third Year IT Program • Total of 15 Units (11 Lecture + 4 Lab) • 7 Courses</div>
+            <div class="copyright">© 2026 By: James Ray Gemilga</div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
