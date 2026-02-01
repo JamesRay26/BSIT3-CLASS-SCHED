@@ -258,12 +258,21 @@ function initializeMotivationEasterEgg() {
 function initializeDayNavigation() {
     const navButtons = document.querySelectorAll('.day-nav-btn');
     const dayNavigation = document.querySelector('.day-navigation');
+    const navToggle = document.getElementById('navToggle');
     const dayMap = {
         '1': 'monday',
         '2': 'tuesday',
         '3': 'wednesday',
         '4': 'thursday'
     };
+
+    // Toggle navigation visibility
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            dayNavigation.classList.toggle('hidden');
+            navToggle.textContent = dayNavigation.classList.contains('hidden') ? '☰' : '✕';
+        });
+    }
 
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -303,6 +312,14 @@ function initializeDayNavigation() {
                 setTimeout(() => {
                     button.classList.remove('active');
                 }, 3000);
+
+                // Auto-hide navigation on mobile after selection
+                if (window.innerWidth <= 768 && navToggle) {
+                    setTimeout(() => {
+                        dayNavigation.classList.add('hidden');
+                        navToggle.textContent = '☰';
+                    }, 1000);
+                }
             }
         });
     });
