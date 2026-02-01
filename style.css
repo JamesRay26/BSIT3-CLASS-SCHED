@@ -24,7 +24,7 @@ html {
 
 body {
     font-family: 'Work Sans', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #f5f5f5;
     min-height: 100vh;
     padding: 0;
     margin: 0;
@@ -34,19 +34,7 @@ body {
 
 /* Floating particles background */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
-    animation: floatParticles 20s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 @keyframes floatParticles {
@@ -55,11 +43,10 @@ body::before {
 }
 
 .container {
-    max-width: 1400px;
-    margin: 2rem auto 2rem;
+    max-width: 100%;
+    margin: 0;
     background: var(--light);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     animation: slideUp 0.6s ease-out;
     position: relative;
     z-index: 1;
@@ -83,7 +70,6 @@ header {
     text-align: center;
     position: relative;
     overflow: hidden;
-    border-radius: 20px 20px 0 0;
 }
 
 header::before {
@@ -114,6 +100,7 @@ header::before {
 .day-navigation {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     margin: 0;
     padding: 1rem 2rem;
@@ -128,6 +115,39 @@ header::before {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+}
+
+.day-navigation.hidden {
+    transform: translateY(-100%);
+}
+
+.nav-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+    background: var(--accent);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nav-toggle:active {
+    transform: scale(0.95);
 }
 
 .day-navigation.scrolled {
@@ -494,7 +514,6 @@ footer {
     text-align: center;
     padding: 2rem 1.5rem 2rem;
     font-size: 0.9rem;
-    border-radius: 0 0 20px 20px;
 }
 
 .quote-bottom {
@@ -517,35 +536,136 @@ footer {
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        padding: 0 1rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
     }
 
     .stats {
-        gap: 1.5rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .stat {
+        flex: 1 1 auto;
+        min-width: 80px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    header {
+        padding: 2rem 1rem;
+    }
+
+    .quote-top {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+        margin: 1rem auto 0;
     }
 
     .schedule-grid {
         grid-template-columns: 1fr;
-        padding: 1rem;
-    }
-
-    .legend {
+        padding: 0.5rem;
         gap: 1rem;
     }
 
-    .day-navigation {
+    .legend {
         gap: 0.5rem;
-        padding: 0.8rem 1rem;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .legend-item {
+        width: 100%;
+    }
+
+    .day-navigation {
+        gap: 0.4rem;
+        padding: 0.6rem 0.5rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .day-navigation::-webkit-scrollbar {
+        display: none;
     }
 
     .day-nav-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
         letter-spacing: 0.5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: auto;
+    }
+
+    .day-nav-btn span::before {
+        content: '';
+        margin-right: 0;
     }
 
     .day-column {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 80px;
+        border-radius: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .time-slot {
+        padding: 0.8rem;
+    }
+
+    .class-info {
+        padding: 0.6rem;
+    }
+
+    .course-code {
+        font-size: 0.9rem;
+    }
+
+    .course-name {
+        font-size: 0.75rem;
+    }
+
+    .details {
+        font-size: 0.7rem;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .quote-bottom {
+        font-size: 0.95rem;
+        padding: 1rem 1.5rem;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    body {
+        padding-top: 0;
+    }
+
+    .day-column:hover {
+        transform: none;
     }
 }
 
