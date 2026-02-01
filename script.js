@@ -254,6 +254,84 @@ function initializeMotivationEasterEgg() {
     });
 }
 
+// Initialize day navigation buttons
+function initializeDayNavigation() {
+    const navButtons = document.querySelectorAll('.day-nav-btn');
+    const dayNavigation = document.querySelector('.day-navigation');
+    const dayMap = {
+        '1': 'monday',
+        '2': 'tuesday',
+        '3': 'wednesday',
+        '4': 'thursday'
+    };
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetDay = button.getAttribute('data-target-day');
+            const targetId = dayMap[targetDay];
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                // Remove active class from all buttons
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Remove highlight from all day columns
+                document.querySelectorAll('.day-column').forEach(col => {
+                    col.classList.remove('highlight');
+                });
+
+                // Smooth scroll to target
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Add highlight animation after scroll
+                setTimeout(() => {
+                    targetElement.classList.add('highlight');
+                    
+                    // Remove highlight after animation completes
+                    setTimeout(() => {
+                        targetElement.classList.remove('highlight');
+                    }, 1000);
+                }, 500);
+
+                // Remove active class after 3 seconds
+                setTimeout(() => {
+                    button.classList.remove('active');
+                }, 3000);
+            }
+        });
+    });
+
+    // Highlight current day button on page load
+    const today = new Date().getDay();
+    if (today >= 1 && today <= 4) {
+        const todayButton = document.querySelector(`[data-target-day="${today}"]`);
+        if (todayButton) {
+            todayButton.style.background = 'rgba(255, 255, 255, 0.25)';
+            todayButton.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+        }
+    }
+
+    // Add scroll effect to sticky navigation
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            dayNavigation.classList.add('scrolled');
+        } else {
+            dayNavigation.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize quotes
@@ -268,4 +346,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeScrollReveal();
     initializeRippleEffect();
     initializeMotivationEasterEgg();
+    initializeDayNavigation();
 });
