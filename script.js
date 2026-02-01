@@ -1,25 +1,85 @@
 // Motivational quotes array
 const quotes = [
-    "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
-    "The only way to do great work is to love what you do. - Steve Jobs",
-    "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau",
-    "Don't be afraid to give up the good to go for the great. - John D. Rockefeller",
-    "I find that the harder I work, the more luck I seem to have. - Thomas Jefferson",
-    "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
-    "The way to get started is to quit talking and begin doing. - Walt Disney",
-    "The secret of success is to do the common thing uncommonly well. - John D. Rockefeller Jr.",
-    "I never dreamed about success, I worked for it. - Estée Lauder",
-    "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
-    "The only limit to our realization of tomorrow is our doubts of today. - Franklin D. Roosevelt",
-    "Opportunities don't happen. You create them. - Chris Grosser",
-    "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
-    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-    "It does not matter how slowly you go as long as you do not stop. - Confucius",
-    "Everything you've ever wanted is on the other side of fear. - George Addair",
-    "Believe you can and you're halfway there. - Theodore Roosevelt",
-    "The harder you work for something, the greater you'll feel when you achieve it. - Anonymous",
-    "Dream bigger. Do bigger. - Anonymous",
-    "Success doesn't just find you. You have to go out and get it. - Anonymous"
+    {
+        text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        author: "Winston Churchill"
+    },
+    {
+        text: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Success usually comes to those who are too busy to be looking for it.",
+        author: "Henry David Thoreau"
+    },
+    {
+        text: "Don't be afraid to give up the good to go for the great.",
+        author: "John D. Rockefeller"
+    },
+    {
+        text: "I find that the harder I work, the more luck I seem to have.",
+        author: "Thomas Jefferson"
+    },
+    {
+        text: "Success is walking from failure to failure with no loss of enthusiasm.",
+        author: "Winston Churchill"
+    },
+    {
+        text: "The way to get started is to quit talking and begin doing.",
+        author: "Walt Disney"
+    },
+    {
+        text: "The secret of success is to do the common thing uncommonly well.",
+        author: "John D. Rockefeller Jr."
+    },
+    {
+        text: "I never dreamed about success, I worked for it.",
+        author: "Estée Lauder"
+    },
+    {
+        text: "Success is not how high you have climbed, but how you make a positive difference to the world.",
+        author: "Roy T. Bennett"
+    },
+    {
+        text: "The only limit to our realization of tomorrow is our doubts of today.",
+        author: "Franklin D. Roosevelt"
+    },
+    {
+        text: "Opportunities don't happen. You create them.",
+        author: "Chris Grosser"
+    },
+    {
+        text: "Your time is limited, don't waste it living someone else's life.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "The future belongs to those who believe in the beauty of their dreams.",
+        author: "Eleanor Roosevelt"
+    },
+    {
+        text: "It does not matter how slowly you go as long as you do not stop.",
+        author: "Confucius"
+    },
+    {
+        text: "Everything you've ever wanted is on the other side of fear.",
+        author: "George Addair"
+    },
+    {
+        text: "Believe you can and you're halfway there.",
+        author: "Theodore Roosevelt"
+    },
+    {
+        text: "The harder you work for something, the greater you'll feel when you achieve it.",
+        author: "Anonymous"
+    },
+    {
+        text: "Dream bigger. Do bigger.",
+        author: "Anonymous"
+    },
+    {
+        text: "Success doesn't just find you. You have to go out and get it.",
+        author: "Anonymous"
+    }
 ];
 
 // Function to get quote based on day of year (shuffles daily)
@@ -35,8 +95,11 @@ function getDailyQuote() {
 // Set the quotes on page load
 function initializeQuotes() {
     const dailyQuote = getDailyQuote();
-    document.getElementById('topQuote').textContent = dailyQuote;
-    document.getElementById('bottomQuote').textContent = dailyQuote;
+    const topQuote = document.getElementById('topQuote');
+    const bottomQuote = document.getElementById('bottomQuote');
+    
+    topQuote.innerHTML = `${dailyQuote.text}<span class="quote-author">— ${dailyQuote.author}</span>`;
+    bottomQuote.innerHTML = `${dailyQuote.text}<span class="quote-author">— ${dailyQuote.author}</span>`;
 }
 
 // Function to highlight current and next time slots
@@ -281,17 +344,6 @@ function initializeDayNavigation() {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
-                // Remove active class from all buttons
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-
-                // Remove highlight from all day columns
-                document.querySelectorAll('.day-column').forEach(col => {
-                    col.classList.remove('highlight');
-                });
-
                 // Smooth scroll to target
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
@@ -308,11 +360,6 @@ function initializeDayNavigation() {
                     }, 1000);
                 }, 500);
 
-                // Remove active class after 3 seconds
-                setTimeout(() => {
-                    button.classList.remove('active');
-                }, 3000);
-
                 // Auto-hide navigation on mobile after selection
                 if (window.innerWidth <= 768 && navToggle) {
                     setTimeout(() => {
@@ -324,17 +371,29 @@ function initializeDayNavigation() {
         });
     });
 
-    // Highlight current day button on page load
-    const today = new Date().getDay();
-    if (today >= 1 && today <= 4) {
-        const todayButton = document.querySelector(`[data-target-day="${today}"]`);
-        if (todayButton) {
-            todayButton.style.background = 'rgba(255, 255, 255, 0.25)';
-            todayButton.style.borderColor = 'rgba(255, 255, 255, 0.4)';
-        }
+    // Check which day is in viewport and highlight corresponding button
+    function checkDayProximity() {
+        const dayColumns = document.querySelectorAll('.day-column');
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+        navButtons.forEach(btn => btn.classList.remove('active'));
+
+        dayColumns.forEach(column => {
+            const rect = column.getBoundingClientRect();
+            const columnTop = window.scrollY + rect.top;
+            const columnBottom = columnTop + rect.height;
+
+            if (scrollPosition >= columnTop && scrollPosition <= columnBottom) {
+                const dayNum = column.getAttribute('data-day');
+                const correspondingButton = document.querySelector(`[data-target-day="${dayNum}"]`);
+                if (correspondingButton) {
+                    correspondingButton.classList.add('active');
+                }
+            }
+        });
     }
 
-    // Add scroll effect to sticky navigation
+    // Add scroll effect to sticky navigation and check proximity
     let lastScroll = 0;
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -345,7 +404,83 @@ function initializeDayNavigation() {
             dayNavigation.classList.remove('scrolled');
         }
         
+        // Check day proximity
+        checkDayProximity();
+        
         lastScroll = currentScroll;
+    });
+
+    // Initial check on load
+    setTimeout(checkDayProximity, 500);
+}
+
+// Initialize back-to-top button
+function initializeBackToTop() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    if (!backToTopButton) return;
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Initialize report modal
+function initializeReportModal() {
+    const reportButton = document.getElementById('reportButton');
+    const reportModal = document.getElementById('reportModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalCancel = document.getElementById('modalCancel');
+
+    if (!reportButton || !reportModal) return;
+
+    // Open modal
+    reportButton.addEventListener('click', () => {
+        reportModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+
+    // Close modal function
+    const closeModal = () => {
+        reportModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    // Close on X button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close on Cancel button
+    if (modalCancel) {
+        modalCancel.addEventListener('click', closeModal);
+    }
+
+    // Close on overlay click
+    reportModal.addEventListener('click', (e) => {
+        if (e.target === reportModal) {
+            closeModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && reportModal.classList.contains('active')) {
+            closeModal();
+        }
     });
 }
 
@@ -364,4 +499,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeRippleEffect();
     initializeMotivationEasterEgg();
     initializeDayNavigation();
+    initializeBackToTop();
+    initializeReportModal();
 });
