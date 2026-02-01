@@ -430,16 +430,49 @@ function initializeReportModal() {
 
     if (!reportButton || !reportModal) return;
 
-    // Open modal
+    let expandTimeout;
+
+    // Handle button click
     reportButton.addEventListener('click', () => {
-        reportModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        // Clear any existing timeout
+        if (expandTimeout) {
+            clearTimeout(expandTimeout);
+        }
+
+        // Expand the button
+        reportButton.classList.add('expanded');
+
+        // Open modal after showing text briefly
+        setTimeout(() => {
+            reportModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Collapse button after modal opens
+            reportButton.classList.remove('expanded');
+        }, 800);
+    });
+
+    // Expand on hover for desktop
+    reportButton.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 768) {
+            reportButton.classList.add('expanded');
+        }
+    });
+
+    // Collapse on mouse leave for desktop
+    reportButton.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 768) {
+            expandTimeout = setTimeout(() => {
+                reportButton.classList.remove('expanded');
+            }, 500);
+        }
     });
 
     // Close modal function
     const closeModal = () => {
         reportModal.classList.remove('active');
         document.body.style.overflow = ''; // Restore scrolling
+        reportButton.classList.remove('expanded');
     };
 
     // Close on X button
