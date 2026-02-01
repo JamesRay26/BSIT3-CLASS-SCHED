@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Third Year Class Schedule (BSIT)</title>
+    <title>Third Year Class Schedule</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
 
     <div class="container">
         <header>
-            <h1>Third Year Class Schedule</h1>
+            <h1>Third Year Class Schedule (BSIT)</h1>
             <p class="subtitle">Academic Year 2025-2026</p>
             <div class="quote-top" id="topQuote"></div>
             <div class="stats">
@@ -35,7 +35,7 @@
                     <span class="stat-label">Total Units</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">7</span>
+                    <span class="stat-number">9</span>
                     <span class="stat-label">Courses</span>
                 </div>
                 <div class="stat">
@@ -48,15 +48,15 @@
         <div class="legend">
             <div class="legend-item">
                 <div class="legend-color" style="background: linear-gradient(135deg, var(--class), #5dade2);"></div>
-                <span>Lecture Class</span>
+                <span>Lecture</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: linear-gradient(135deg, var(--lab), #bb8fce);"></div>
-                <span>Laboratory Class</span>
+                <span>Laboratory</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: var(--vacant);"></div>
-                <span>Vacant Time</span>
+                <span>Vacant</span>
             </div>
         </div>
 
@@ -342,9 +342,35 @@
 
         <footer>
             <div class="quote-bottom" id="bottomQuote"></div>
-            <div>Third Year IT Program • Total of 15 Units (11 Lecture + 4 Lab) • 7 Courses</div>
+            <div>Third Year IT Program • Total of 15 Units (11 Lecture + 4 Lab) • 9 Courses</div>
             <div class="copyright">© 2026 By: James Ray Gemilga</div>
         </footer>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+    <button class="report-button" id="reportButton" aria-label="Report an issue or give feedback">
+        Report/Feedback
+    </button>
+
+    <!-- Report Modal -->
+    <div class="modal-overlay" id="reportModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">✕</button>
+            <div class="modal-icon">⚠️</div>
+            <h2 class="modal-title">Report Issue / Feedback</h2>
+            <p class="modal-text">
+                Having any issues or found wrong information? Please contact or leave a message on my Facebook account. 
+                It's a big help for us and our classmates to keep this schedule accurate and up-to-date!
+            </p>
+            <div class="modal-buttons">
+                <a href="https://www.facebook.com/jamesray.gemilga.1" target="_blank" rel="noopener noreferrer" class="modal-btn modal-btn-primary">
+                    Go to Facebook
+                </a>
+                <button class="modal-btn modal-btn-secondary" id="modalCancel">
+                    Cancel
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
